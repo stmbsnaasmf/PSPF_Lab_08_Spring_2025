@@ -1,0 +1,236 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}			    % Use this package to include images %Path relative to the main .tex file 
+\graphicspath{ {./Images/} }
+\usepackage{amsmath}			    % A library of many standard math expressions
+\usepackage{mathtools}              % For Aboxed{} (https://tex.stackexchange.com/questions/346577/boxed-and-align)
+% \usepackage[margin=1in]{geometry} % Sets 1in margins. 
+\usepackage{fancyhdr}			    % Creates headers and footers
+\usepackage{enumerate}              % These two packages give custom labels to a list
+\usepackage[shortlabels]{enumitem}
+\usepackage{hyperref}               % https://www.overleaf.com/learn/latex/Hyperlinks
+\usepackage{xcolor}
+\usepackage[svgnames]{xcolor}
+\usepackage{float}
+\usepackage{cmupint}                % For upright integrals. https://tex.stackexchange.com/questions/503527/how-to-write-upright-integrals-with-automatic-sizing
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\usepackage{titling}
+\usepackage{minted}                 % For code blocks
+\usemintedstyle{monokai}            % For code blocks
+\definecolor{bg}{HTML}{282828}      % For code blocks, from https://github.com/kevinsawicki/monokai
+\usepackage{nameref}
+% \usepackage{mathtools, tccomicsans}
+% \usepackage{comicsans}
+\usepackage[main,largesymbols]{tccomicsans} % https://www.reddit.com/r/LaTeX/comments/1l5no5d/comment/mwm64ze/
+\renewcommand*\contentsname{Summary}
+% \renewcommand{\contentsname}{\centering \normalfont\normalsize Contents}
+\renewcommand{\contentsname}{\centering \bfseries\Large Contents}
+% \renewcommand{\cftaftertoctitle}{\hfill}
+
+\hypersetup
+{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    %pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+}
+
+% \title{OOP Lab Manual 05}
+% \author{STM}
+% \date{December 2024}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+
+    \vspace*{-8em}
+    \includegraphics[width=0.5\textwidth]{Bismillah.png}%\\[2cm]
+    \vspace*{5em}
+
+    
+    \vspace*{1cm}
+
+     \includegraphics[width=0.5\textwidth]{GU Tech 1685x1330.png}\\[2cm]
+
+    \MakeUppercase{\Huge \textbf{GU TECH}}\\[1.5ex]
+    
+    \vspace*{1cm}
+    
+    \Huge Problem Solving \& Programming Fundamentals \\[1.5ex]
+    \LARGE Lab 08 \\[2cm]
+
+    % {\Large STM} \\ [2cm]
+
+    {\Large \today}\\[1cm]
+    
+\end{titlepage}
+
+\newpage
+
+% \vspace*{4cm}
+% \begin{center}
+%     \Huge \textbf{Outline}
+% \end{center}
+
+% \begin{itemize}
+%    \item \nameref{Functions}
+% \end{itemize}
+
+\tableofcontents
+
+\newpage
+
+
+\addcontentsline{toc}{part}{Recursion}
+\part*{\hypertarget{recursion}{Recursion}} \label{recursion}
+
+\begin{center}
+    In order to understand \hyperlink{recursion}{recursion}, you must understand \hyperlink{recursion}{recursion}.
+\end{center}
+
+\noindent \hyperlink{recursion}{Recursion} is a programming technique where a function calls itself within its own definition to solve a problem. \\
+
+\noindent The following is a simple example of a function that calls itself to calculate the factorial of a number. \href{https://github.com/stmbsnaasmf/PSPF_Lab_08_Spring_2025/blob/main/factorial.c}{GitHub link}.
+
+\begin{minted}[bgcolor=bg, framesep=2mm]{cpp}
+#include <stdio.h>
+
+int factorial(int n)
+{
+    if (1 == n || 0 == n)
+    {
+        return 1;
+    }
+    else
+    {
+        return (n * factorial(n - 1));
+    }
+}
+
+int main(int argc, char** argv)
+{
+    int n;
+    scanf("%d", &n);
+    printf("%d\n", factorial(n));
+
+    return 0;
+}
+\end{minted}
+
+\newpage
+
+\noindent Here is a visualization of how the function works for the input $5$:
+
+\begin{minted}[bgcolor=bg, framesep=2mm]{cpp}
+
+5 * factorial(4)
+5 * 4 * factorial(3)
+5 * 4 * 3 * factorial(2)
+5 * 4 * 3 * 2 * factorial(1)
+5 * 4 * 3 * 2 * 1
+5 * 4 * 3 * 2
+5 * 4 * 6
+5 * 24
+120
+
+\end{minted}
+
+\vspace{1cm}
+
+\addcontentsline{toc}{section}{Explanation of Recursion}
+\section*{Explanation of \hyperlink{recursion}{Recursion}}
+
+\noindent A recursive function must:
+
+\begin{enumerate}
+    \item Call itself recursively.
+    \item Have a base case that makes the function stop recursing.
+    \item Have a recursive case that makes the function move towards the base case.
+\end{enumerate}
+
+\noindent \textbf{Note:} It is possible for a recursive function to have more than one base case or recursive case. \\
+
+\newpage
+
+\begin{minted}[bgcolor=bg, framesep=2mm]{cpp}
+
+3 10 5 16 8 4 2 1
+
+03, 1
+10, 2
+05, 3
+16, 4
+08, 5
+04, 6
+02, 7
+01, 8
+
+\end{minted}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\addcontentsline{toc}{part}{Pls ignore me}
+\part*{Pls ignore me} \label{pls ignore me}
+
+Look at the \textbf{following \textit{integral}} : 
+
+\begin{align*}
+    \int x \, \text{d}x &= \frac{ a \, \textit{a} \, b \, \textit{b} \, v\, c \ o \ x^2}{2} + c \\
+    \intertext{}
+    \Aboxed{\frac{\text{d}}{\text{d}x} x^2 &= 2 x^{2 - 1} = 2x} \\
+\end{align*}
+
+
+\newpage
+\addcontentsline{toc}{part}{Lab Tasks}
+\part*{Lab Tasks}
+
+
+
+\newpage
+\addcontentsline{toc}{section}{Section}
+\section*{Section}
+
+
+\addcontentsline{toc}{subsection}{Subsection}
+\subsection*{Subsection}
+
+\addcontentsline{toc}{subsubsection}{Subsubsection}
+\subsubsection*{Subsubsection}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
