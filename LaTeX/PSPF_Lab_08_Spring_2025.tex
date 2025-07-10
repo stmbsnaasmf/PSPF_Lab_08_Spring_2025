@@ -156,12 +156,38 @@ factorial(5)
 
 \newpage
 
-\begin{minted}[bgcolor=bg, framesep=2mm]{cpp}
-#include <iostream>
-using namespace std;
+\noindent Consider the following function that calculates the Collatz sequence length for a given number $n$.
 
-int csl_r(int n)
+\begin{minted}[bgcolor=bg, framesep=2mm]{cpp}
+int collatzSequenceLength(int n)
 {
+    int sequencelength = 1; 
+    //Because off by one otherwise
+    int number = n;
+
+    while (number != 1)
+    {
+        if (number % 2 == 0)
+        {
+            number = number / 2;
+        }
+        else
+        {
+            number = number * 3 + 1;
+        }
+        
+        sequencelength++;
+    }
+
+    return sequencelength;
+}
+\end{minted}
+
+\newpage
+\noindent Now consider its recursive version:
+\begin{minted}[bgcolor=bg, framesep=2mm]{cpp}
+int csl_r(int n)
+    {
     if (1 == n)
     {
         return 1;
@@ -178,19 +204,9 @@ int csl_r(int n)
         }
     }
 }
-
-int main(void)
-{
-    int n = 3;
-    scanf("%d", &n);
-    printf("%d\n", csl_r(n));
-
-    return 0;
-}
 \end{minted}
 
 \newpage
-
 \noindent Here is a visualization of how the function works for the input $3$:
 
 \begin{minted}[bgcolor=bg, framesep=2mm]{cpp}
@@ -215,20 +231,6 @@ csl(3)
 \end{minted}
 
 
-\begin{minted}[bgcolor=bg, framesep=2mm]{cpp}
-
-3 10 5 16 8 4 2 1
-
-03, 1
-10, 2
-05, 3
-16, 4
-08, 5
-04, 6
-02, 7
-01, 8
-
-\end{minted}
 
 
 
@@ -242,35 +244,126 @@ csl(3)
 
 
 
-\newpage
-\addcontentsline{toc}{part}{Pls ignore me}
-\part*{Pls ignore me} \label{pls ignore me}
 
-Look at the \textbf{following \textit{integral}} : 
+% \newpage
+% \addcontentsline{toc}{part}{Pls ignore me}
+% \part*{Pls ignore me} \label{pls ignore me}
 
-\begin{align*}
-    \int x \, \text{d}x &= \frac{ a \, \textit{a} \, b \, \textit{b} \, v\, c \ o \ x^2}{2} + c \\
-    \intertext{}
-    \Aboxed{\frac{\text{d}}{\text{d}x} x^2 &= 2 x^{2 - 1} = 2x} \\
-\end{align*}
+% Look at the \textbf{following \textit{integral}} : 
+
+% \begin{align*}
+%     \int x \, \text{d}x &= \frac{ a \, \textit{a} \, b \, \textit{b} \, v\, c \ o \ x^2}{2} + c \\
+%     \intertext{}
+%     \Aboxed{\frac{\text{d}}{\text{d}x} x^2 &= 2 x^{2 - 1} = 2x} \\
+% \end{align*}
 
 
 \newpage
 \addcontentsline{toc}{part}{Lab Tasks}
 \part*{Lab Tasks}
 
+\begin{enumerate}
+    \item \noindent Design and implement a smart emergency alert system that evaluates environmental sensor data — temperature, gas concentration, and smoke levels — and determines an appropriate system alert level. \\
+
+\noindent The system must:
+
+\begin{itemize}
+    \item Analyze each of the three sensor inputs independently.
+    \item Use separate functions to classify the risk level of each sensor reading.
+    \item Use another function to combine those risk levels and determine the final alert severity.
+    \item Display a user-friendly alert message based on that severity.
+\end{itemize}
+
+\noindent \textbf{Risk Classification Criteria}
+
+\noindent Each of the three sensor readings must be classified into three levels:
+
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Sensor Type} & \textbf{Low Risk (0)} & \textbf{Medium Risk (1)} & \textbf{High Risk (2)} \\
+\hline
+Temperature (°C) & $\leq 50^\circ$C & 51°C – 70°C & $> 70^\circ$C \\
+Gas Level (\%) & $\leq 50\%$ & 51\% – 80\% & $> 80\%$ \\
+Smoke Level (\%) & $\leq 50\%$ & 51\% – 80\% & $> 80\%$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\noindent \textbf{Alert Levels} 
+
+\noindent After classifying all three readings, the overall alert level is the highest of the three individual risk levels. Based on the alert level, the system should display the following messages: 
+
+\begin{center}
+\begin{tabular}{|c|l|}
+\hline
+\textbf{Alert Level} & \textbf{Message} \\
+\hline
+0 (Low) & Environment is Safe. \\
+1 (Medium) & Warning: Monitor conditions closely. \\
+2 (High) & \textbf{DANGER! Immediate action required.} \\
+\hline
+\end{tabular}
+\end{center}
+
+\noindent \textbf{Implementation Requirements}
+
+\noindent Your solution must include the following functions:
+
+\begin{itemize}
+    \item A function to classify temperature risk level.
+    \item A function to classify gas risk level.
+    \item A function to classify smoke risk level.
+    \item A function to determine the final alert level based on the highest of the three.
+    \item A function to display an alert message based on the alert level.
+    \item A top-level function to handle input and trigger the analysis sequence.
+\end{itemize}
+
+\noindent \textbf{Example Input/Output}
+
+\begin{verbatim}
+Enter temperature: 72
+Enter gas level: 60
+Enter smoke level: 45
+
+ALERT LEVEL: DANGER! Immediate action required.
+\end{verbatim}
 
 
-\newpage
-\addcontentsline{toc}{section}{Section}
-\section*{Section}
 
 
-\addcontentsline{toc}{subsection}{Subsection}
-\subsection*{Subsection}
 
-\addcontentsline{toc}{subsubsection}{Subsubsection}
-\subsubsection*{Subsubsection}
+
+
+
+
+
+
+
+\item Write a function that takes monthly electricity consumption in kWh, and calculates and returns the billed amount in PKR. One kWh costs 44.5 PKR plus 20\% tax.
+
+\item Define the given function prototype to calculate powers: \\ \textcolor{red}{\texttt{double power(double n, int p);}} 
+
+\item Write a recursive function to calculate the nth term of the Fibonacci sequence.
+
+\begin{itemize}
+    \item \textbf{Hint:} It may be better to start from $n$ instead of $0$ or $1$.
+\end{itemize}
+
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
